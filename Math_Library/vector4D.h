@@ -141,10 +141,14 @@ public:
 				arr_values[1] == v.arr_values[1] &&
 				arr_values[2] == v.arr_values[2]);
 	}
-	bool operator==(const Vector4D& v) {
+	bool operator!=(const Vector4D& v) {
 		return !(arr_values[0] == v.arr_values[0] &&
 				 arr_values[1] == v.arr_values[1] &&
 				 arr_values[2] == v.arr_values[2]);
+	}
+
+	float operator[] (int index) {
+		return arr_values[index];
 	}
 
 	// Prints the values of Vector.
@@ -153,5 +157,8 @@ public:
 					<< "y:\t"		<< arr_values[1] << "\n"
 					<< "z:\t"		<< arr_values[2] << "\n"
 					<< "w:\t"		<< arr_values[3] << "\n\n";
+	}
+	void print_line() {
+		std::cout << arr_values[0] << "\t" << arr_values[1] << "\t" << arr_values[2] << "\t" << arr_values[3] << "\n";
 	}
 };
