@@ -6,21 +6,29 @@ class Vector4D {
 private:
 	float arr_values[4];
 public:
+
 	// -----< Constructors >---------------------------------------------------
+
 	Vector4D() {
 		arr_values[0] = 0;
 		arr_values[1] = 0;
 		arr_values[2] = 0;
-		arr_values[3] = 1;
+		arr_values[3] = 1; // w is 1 by default. 
 	}
 	Vector4D(float nx, float ny, float nz, float nw = 1) {
 		arr_values[0] = nx;
 		arr_values[1] = ny;
 		arr_values[2] = nz;
-		arr_values[3] = nw;
+		arr_values[3] = nw; // w is 1 by default. 
 	}
 
 	// -----< Getters >--------------------------------------------------------
+
+	// Operator that returns the value of the inserted index. 
+	float operator[] (int index) {
+		return arr_values[index];
+	}
+
 	// Returns the value of x in the vector.
 	float get_x() { return arr_values[0]; }
 	// Returns the value of y in the vector.
@@ -31,12 +39,13 @@ public:
 	float get_w() { return arr_values[3]; }
 
 	// -----< Setters >--------------------------------------------------------
+
 	// Set the values for all values in the vector.
 	void set_components(float nx, float ny, float nz, float nw = 1) {
 		arr_values[0] = nx;
 		arr_values[1] = ny;
 		arr_values[2] = nz;
-		arr_values[3] = nw;
+		arr_values[3] = nw; // w is 1 by default. 
 	}
 	// Set the value of x in the vector.
 	void set_x(float nx) { arr_values[0] = nx; }
@@ -48,6 +57,7 @@ public:
 	void set_w(float nw) { arr_values[3] = nw; }
 
 	// -----< Dot Product >----------------------------------------------------
+
 	float dot_product(Vector4D v) {
 		return	arr_values[0] * v.arr_values[0] +
 				arr_values[1] * v.arr_values[1] +
@@ -55,6 +65,7 @@ public:
 	}
 
 	// -----< Scalar >---------------------------------------------------------
+
 	Vector4D scalar(float s) {
 		Vector4D new_v;
 		new_v.arr_values[0] = arr_values[0] * s;
@@ -65,15 +76,19 @@ public:
 	}
 
 	// -----< Lenght >---------------------------------------------------------
+
 	float lenght() {
 		float len;
+		// Lenght is the squarroot of ( x^2 + y^2 + z^2 ).
 		len = sqrt(	pow(arr_values[0], 2) +
 					pow(arr_values[1], 2) +
 					pow(arr_values[2], 2));
+		// Returns the lenght of the vector.
 		return len;
 	}
 
 	// -----< Normalize >------------------------------------------------------
+
 	Vector4D norm() {
 		float len, nx, ny, nz;
 		// len becomes the lenght of the vector.
@@ -88,6 +103,7 @@ public:
 	}
 
 	// -----< Operators >------------------------------------------------------
+
 	// Operators that makes it possible to use addition, subtraction,
 	// multiplication and division on the Vector.
 	Vector4D operator+(const Vector4D& v) {
@@ -145,10 +161,6 @@ public:
 		return !(arr_values[0] == v.arr_values[0] &&
 				 arr_values[1] == v.arr_values[1] &&
 				 arr_values[2] == v.arr_values[2]);
-	}
-
-	float operator[] (int index) {
-		return arr_values[index];
 	}
 
 	// Prints the values of Vector.

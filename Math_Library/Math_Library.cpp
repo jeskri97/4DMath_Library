@@ -7,8 +7,10 @@
 using namespace std;
 
 int main() {
-	Matrix4D test1(1, 2, 3, 4, 5, 6, 7, 8, 9), test2;
+	Vector4D test1(1, 2, 3), test2;
 	test1.print();
-	test2 = test1.rotateY(180);
+	test2 = test1.norm();
 	test2.print();
+	//float dot_ptr = test1.dot_product(test2);
+	//cout << "Dotproduct of test1 test2:\t" << dot_ptr;
 }

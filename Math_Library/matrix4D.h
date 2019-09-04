@@ -13,7 +13,9 @@ class Matrix4D {
 private:
 	Vector4D lines[4];
 public:
+
 	// -----< Constructors >---------------------------------------------------
+
 	Matrix4D() {
 		lines[0].set_components(0, 0, 0, 0);
 		lines[1].set_components(0, 0, 0, 0);
@@ -42,6 +44,7 @@ public:
 	}
 
 	// -----< Setters >--------------------------------------------------------
+
 	// Set all the values in the matrix.
 	void set_components(float x1, float y1, float z1, float w1,
 						float x2, float y2, float z2, float w2, 
@@ -75,6 +78,7 @@ public:
 	void set_w4(float nw) { lines[3].set_w(nw); }
 
 	// -----< Operators >------------------------------------------------------
+
 	Matrix4D operator*(const Matrix4D& m) {
 		Matrix4D new_m;
 		new_m.lines[0] = lines[0] * m.lines[0];
@@ -93,6 +97,7 @@ public:
 
 
 	// -----< Transpose >------------------------------------------------------
+
 	// Returns the Transpose of a Matrix
 	Matrix4D transpose() {
 		Matrix4D new_m;
@@ -112,14 +117,15 @@ public:
 		y3 = lines[2][1];
 		z3 = lines[2][2];
 
-		new_m.lines[0].set_components(x1, x2, x3);
-		new_m.lines[1].set_components(y1, y2, y3);
-		new_m.lines[2].set_components(z1, z2, z3);
+		new_m.lines[0].set_components(x1, x2, x3, 0);
+		new_m.lines[1].set_components(y1, y2, y3, 0);
+		new_m.lines[2].set_components(z1, z2, z3, 0);
 
 		return new_m;
 	}
 
 	// -----< Rotation >-------------------------------------------------------
+
 	// Rotation around the x-axis
 	Matrix4D rotateX(float degrees) {
 		float radians = degrees * (PI / 180);
